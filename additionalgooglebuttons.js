@@ -6,8 +6,8 @@
 // @include /^http(s)?:\/\/(www)?\.google\.\w*\/search.*$/
 // @namespace
 // @description Additional Google Options (languages, discussion)
-// @downloadURL https://github.com/aaronDash/jsscripts/raw/main/additionalgooglebuttons.js
-// @updateURL https://github.com/aaronDash/jsscripts/raw/main/additionalgooglebuttons.js
+// @downloadURL https://raw.githubusercontent.com/aaronDash/jsscripts/main/additionalgooglebuttons.js
+// @updateURL https://raw.githubusercontent.com/aaronDash/jsscripts/main/additionalgooglebuttons.js
 // ==/UserScript==
 (function () {
   const langList = ['ru', 'de', 'en', 'ja', 'fr']
