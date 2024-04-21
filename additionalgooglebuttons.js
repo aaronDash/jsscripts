@@ -1,0 +1,59 @@
+// ==UserScript==
+// @name Additional Google Options
+// @description:en Additional Google Options
+// @version 1.0
+// @grant none
+// @include /^http(s)?:\/\/(www)?\.google\.\w*\/search.*$/
+// @namespace
+// @description Additional Google Options (languages, discussion)
+// ==/UserScript==
+(function () {
+  const langList = ['ru', 'de', 'en', 'ja', 'fr']
+  const discussion = ['discussions']
+  const url = new URL(location.href)
+
+  const menu = document.createElement('div')
+  menu.style.position = 'absolute'
+  menu.style.top = '0'
+  menu.style.left = '0'
+  menu.style.right = '0'
+  menu.style.zIndex = '9999999999'
+  menu.style.display = 'flex'
+  menu.style.flexDirection = 'row'
+  menu.style.gap = '1rem'
+  menu.style.justifyContent = 'center'
+
+  langList.forEach(l => {
+    const item = document.createElement('div')
+    url.searchParams.set('lr', `lang_${l}`)
+    item.innerHTML = `<a href="${url}">${l}</a>`
+    menu.appendChild(item)
+  })
+
+  discussion.forEach(d => {
+    const item = document.createElement('div');
+    const searchParams = new URLSearchParams(window.location.search);
+    const query = searchParams.get('q');
+    const modifiedQuery = `inurl:forum|discussion|viewthread|showthread|viewtopic|showtopic|comments|comment|"index.php?topic"|intext:"reading this topic"|"next thread"|"next topic"|"send private message"`;
+    const url = new URL(window.location.href);
+    const searchParamStr = url.searchParams.toString();
+    const updatedSearchParamStr = searchParamStr ? `${searchParamStr}&q=${encodeURIComponent(modifiedQuery)}` : `q=${encodeURIComponent(modifiedQuery)}`;
+    url.search = updatedSearchParamStr;
+    item.innerHTML = `<a href="${url}">${d}</a>`;
+    menu.appendChild(item);
+
+    // Find the text area by searching for nearby elements
+    const form = document.querySelector('form[name="f"]');
+    if (form) {
+      const textArea = form.querySelector('textarea[name="q"]');
+      if (textArea) {
+        textArea.value = query; // Set only the original query
+      }
+    }
+  });
+
+
+
+
+  document.querySelector('body').appendChild(menu)
+})()
