@@ -54,28 +54,6 @@
         textArea.value = query; // Set only the original query
       }
     }
-  })
-
-  wiki.forEach(d => {
-    const item = document.createElement('div');
-    const searchParams = new URLSearchParams(window.location.search);
-    const query = searchParams.get('q');
-    const modifiedQuery = `inurl:wiki`;
-    const url = new URL(window.location.href);
-    const searchParamStr = url.searchParams.toString();
-    const updatedSearchParamStr = searchParamStr ? `${searchParamStr}&q=${encodeURIComponent(modifiedQuery)}` : `q=${encodeURIComponent(modifiedQuery)}`;
-    url.search = updatedSearchParamStr;
-    item.innerHTML = `<a href="${url}">${d}</a>`;
-    menu.appendChild(item);
-
-    // Find the text area by searching for nearby elements
-    const form = document.querySelector('form[name="f"]');
-    if (form) {
-      const textArea = form.querySelector('textarea[name="q"]');
-      if (textArea) {
-        textArea.value = query;
-      }
-    }
   });
 
 
