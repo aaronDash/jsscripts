@@ -6,6 +6,8 @@
 // @include /^http(s)?:\/\/(www)?\.google\.\w*\/search.*$/
 // @namespace
 // @description Additional Google Options (languages, discussion)
+// @downloadURL https://github.com/aaronDash/jsscripts/raw/main/additionalgooglebuttons.js
+// @updateURL https://github.com/aaronDash/jsscripts/raw/main/additionalgooglebuttons.js
 // ==/UserScript==
 (function () {
   const langList = ['ru', 'de', 'en', 'ja', 'fr']
@@ -22,6 +24,7 @@
   menu.style.flexDirection = 'row'
   menu.style.gap = '1rem'
   menu.style.justifyContent = 'center'
+  menu.style.fontSize = '18px'
 
   langList.forEach(l => {
     const item = document.createElement('div')
@@ -34,7 +37,7 @@
     const item = document.createElement('div');
     const searchParams = new URLSearchParams(window.location.search);
     const query = searchParams.get('q');
-    const modifiedQuery = `inurl:forum|discussion|viewthread|showthread|viewtopic|showtopic|comments|comment|"index.php?topic"|intext:"reading this topic"|"next thread"|"next topic"|"send private message"`;
+    const modifiedQuery = `inurl:forum|viewthread|showthread|viewtopic|showtopic|comments|comment|questions|"index.php?topic"|intext:"reading this topic"|"next thread"|"next topic"|"send private message"`;
     const url = new URL(window.location.href);
     const searchParamStr = url.searchParams.toString();
     const updatedSearchParamStr = searchParamStr ? `${searchParamStr}&q=${encodeURIComponent(modifiedQuery)}` : `q=${encodeURIComponent(modifiedQuery)}`;
