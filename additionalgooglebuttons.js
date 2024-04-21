@@ -73,7 +73,7 @@
     if (form) {
       const textArea = form.querySelector('textarea[name="q"]');
       if (textArea) {
-        textArea.value = query; // Set only the original query
+        textArea.value = query;
       }
     }
   });
