@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Additional Google Options
 // @description:en Additional Google Options
-// @version 1.2
+// @version 1.3
 // @grant none
 // @include /^http(s)?:\/\/(www)?\.google\.\w*\/search.*$/
 // @namespace
@@ -25,7 +25,7 @@
   menu.style.flexDirection = 'row'
   menu.style.gap = '1rem'
   menu.style.justifyContent = 'center'
-  menu.style.fontSize = '18px'
+
 
   langList.forEach(l => {
     const item = document.createElement('div')
