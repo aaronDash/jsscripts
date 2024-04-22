@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name Additional Google Options
 // @description:en Additional Google Options
-// @version 1.1
+// @version 1.2
 // @grant none
 // @include /^http(s)?:\/\/(www)?\.google\.\w*\/search.*$/
 // @namespace
